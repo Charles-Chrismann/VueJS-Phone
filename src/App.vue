@@ -1,8 +1,8 @@
 <template>
   <nav>
-    <router-link to="/contact">Contact</router-link> |
+    <router-link to="/journal">Journal</router-link> |
     <router-link to="/">Clavier</router-link> |
-    <router-link to="/journal">Journal</router-link>
+    <router-link to="/contact">Contact</router-link>
   </nav>
   <router-view/>
 </template>

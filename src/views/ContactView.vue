@@ -1,6 +1,11 @@
 <script>
+import ContactItem from '@/components/ContactItem.vue';
+
 export default {
   name: 'ContactView',
+  components: {
+    ContactItem
+  },
   computed: {
     contacts() {
       return this.$store.state.contacts
@@ -12,15 +17,11 @@ export default {
 <template lang="">
   <div>
     Contact
-    a{{ this.contacts }}a
     <div>
-      <div v-for="contact, index in contacts" :key="index">
-        alor
-      {{ contact.firstName }}
-      </div>
+      <ContactItem v-for="contact, index in contacts" :key="index" :contact="contact"/>
     </div>
 
-    <router-link to="/addContact">Journal</router-link>
+    <router-link to="/addContact">Add Contact</router-link>
   </div>
 </template>
 

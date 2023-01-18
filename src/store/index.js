@@ -7,20 +7,30 @@ export default createStore({
         firstName: 'Charles',
         lastName: 'Chrismann',
         number: '0612345678'
+      },
+      {
+        firstName: 'Tom',
+        lastName: 'Tamen',
+        number: '1234'
       }
     ],
-    phoneCalls: [
+    calls: [
       {
-        firstName: 'Charles',
-        lastName: 'Chrismann',
-        number: '0612345678',
-        timestamp: 1674060414759
+        contact: {
+          firstName: 'Charles',
+          lastName: 'Chrismann',
+          number: '0612345678'
+        },
+        timestamp: 1674084173298 
       }
     ]
   },
   getters: {
   },
   mutations: {
+    call(state, call) {
+      state.calls.push(call)
+    }
   },
   actions: {
   },
