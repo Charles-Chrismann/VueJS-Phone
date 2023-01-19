@@ -1,13 +1,30 @@
+<script>
+import IphoneComp from './components/IphoneComp.vue';
+export default {
+  components: {
+    IphoneComp
+  }
+}
+</script>
+
 <template>
-  <nav>
-    <router-link to="/journal">Journal</router-link> |
-    <router-link to="/">Clavier</router-link> |
-    <router-link to="/contact">Contact</router-link>
-  </nav>
-  <router-view/>
+  <IphoneComp>
+    <nav>
+      <router-link to="/journal">Journal</router-link> |
+      <router-link to="/">Clavier</router-link> |
+      <router-link to="/contact">Contact</router-link>
+    </nav>
+    <router-view/>
+  </IphoneComp>
 </template>
 
 <style>
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
