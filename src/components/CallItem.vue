@@ -19,7 +19,7 @@ export default {
 
 <template lang="">
   <div>
-    {{ call.contact ? `${call.contact.firstName} ${call.contact.lastName}` : 'Unknown' }} {{ createDate }}
+    {{ call.contact ? `${call.contact.firstName} ${call.contact.lastName}` : 'Unknown' }} {{ call.contact.number }} {{ createDate }}
   </div>
 </template>
 

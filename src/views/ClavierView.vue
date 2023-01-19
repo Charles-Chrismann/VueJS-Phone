@@ -12,9 +12,12 @@ export default {
       this.phoneNumber += number.toString()
 
 
-      this.concurrentContact = null
+      this.concurrentContact = {}
       let contact = this.contacts.find(contact => contact.number.startsWith(this.phoneNumber))
       if(contact) this.concurrentContact = contact
+      else {
+        this.concurrentContact = {firstName: '', lastName:'Unknown', number:this.phoneNumber}
+      }
     },
     call() {
       let date = new Date()
