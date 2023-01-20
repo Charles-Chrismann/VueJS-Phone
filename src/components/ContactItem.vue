@@ -15,13 +15,16 @@ export default {
 </script>
 
 <template lang="">
-  <div>
+  <div class="contacts__contact">
     
     {{ contact.firstName }}
     <button @click="call()">Call</button>
   </div>
 </template>
 
-<style lang="">
-  
+<style lang="scss" scoped>
+  .contacts__contact {
+    width: 100%;
+    border-top: solid 1px #ebebec;
+  }
 </style>

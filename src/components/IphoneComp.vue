@@ -62,7 +62,9 @@ export default {
         <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/IPhone_14_Pro_vector.svg/378px-IPhone_14_Pro_vector.svg.png" alt="" style="width:100%"> -->
       </div>
       <div class="side right"></div>
-      <div class="side back"></div>
+      <div class="side back">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496.255 608.728"><path d="M273.81 52.973C313.806.257 369.41 0 369.41 0s8.271 49.562-31.463 97.306c-42.426 50.98-90.649 42.638-90.649 42.638s-9.055-40.094 26.512-86.971zM252.385 174.662c20.576 0 58.764-28.284 108.471-28.284 85.562 0 119.222 60.883 119.222 60.883s-65.833 33.659-65.833 115.331c0 92.133 82.01 123.885 82.01 123.885s-57.328 161.357-134.762 161.357c-35.565 0-63.215-23.967-100.688-23.967-38.188 0-76.084 24.861-100.766 24.861C89.33 608.73 0 455.666 0 332.628c0-121.052 75.612-184.554 146.533-184.554 46.105 0 81.883 26.588 105.852 26.588z" fill="#999"/></svg>
+      </div>
       <div class="side left"></div>
       <div class="side bot"></div>
 
@@ -121,12 +123,16 @@ export default {
     // transform: rotateY(-10deg) rotateX(-10deg);
     display: grid;
     place-items: center;
+    background: #000000;
+    border-radius: var(--brPhone);
 
     
 
     .side {
       height: 100%;
       position: absolute;
+      background: #000000;
+      border: solid 1px #e5e5e5;
       &.front {
         background: #fff;
         border: solid 0.5rem #000000;
@@ -205,9 +211,16 @@ export default {
 
       &.back {
         width: 100%;
-        background: red;
         transform: rotateY(90deg) translateX(5.49%) rotateY(-270deg);
         border-radius: var(--brPhone);
+
+        & svg {
+          position: absolute;
+          width: 20%;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
       }
   
       &.right {
@@ -216,7 +229,6 @@ export default {
         position: absolute;
         right: 0;
         transform: translate(50%) rotateY(90deg);
-        background: blue;
       }
 
       &.left {
@@ -225,11 +237,9 @@ export default {
         position: absolute;
         left: 0;
         transform: translate(-50%) rotateY(90deg);
-        background: blue;
       }
 
       &.top {
-        background: yellow;
         top: 0;
         width: calc(100% - var(--brPhone) * 1.5);
         height: 5.32%;
@@ -238,7 +248,6 @@ export default {
       }
 
       &.bot {
-        background: yellow;
         bottom: 0;
         width: calc(100% - var(--brPhone) * 1.5);
         height: 5.32%;

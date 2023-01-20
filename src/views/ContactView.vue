@@ -15,16 +15,41 @@ export default {
 </script>
 
 <template lang="">
-  <div>
-    Contact
+  <div class="contacts__comp">
     <div>
+      <h2>Contacts</h2>
+      <span>
+        <router-link to="/addContact"><font-awesome-icon icon="fa-solid fa-plus" /></router-link>
+      </span>
+    </div>
+    <div class="contacts">
       <ContactItem v-for="contact, index in contacts" :key="index" :contact="contact"/>
     </div>
 
-    <router-link to="/addContact">Add Contact</router-link>
+    
   </div>
 </template>
 
-<style lang="">
-  
+<style lang="scss" scoped>
+.contacts__comp {
+  padding: 0 2%;
+
+  & > :first-child {
+    position: relative;
+    h2 {
+      text-align: start;
+    }
+    span {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      // color: #377af6;
+    }
+  }
+
+  .contacts {
+
+  }
+}
 </style>
