@@ -18,7 +18,7 @@ export default {
   <div class="contacts__comp">
     <div>
       <h2>Contacts</h2>
-      <span>
+      <span class="addContact">
         <router-link to="/addContact"><font-awesome-icon icon="fa-solid fa-plus" /></router-link>
       </span>
     </div>
@@ -32,6 +32,7 @@ export default {
 
 <style lang="scss" scoped>
 .contacts__comp {
+
   padding: 0 2%;
 
   & > :first-child {
@@ -45,6 +46,9 @@ export default {
       top: 50%;
       transform: translateY(-50%);
       // color: #377af6;
+      a {
+        color: #0958fc;
+      }
     }
   }
 

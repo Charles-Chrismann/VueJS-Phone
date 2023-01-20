@@ -19,6 +19,15 @@ export default {
 </script>
 <template lang="">
     <div>
+        <div class="nav">
+            <span class="cancel">
+                <router-link to="/contact">Cancel</router-link>
+            </span>
+            <h3>New Contact</h3>
+            <span class="done">
+                Done
+            </span>
+        </div>
         <form @submit.prevent="addContact">
 
         <input type="text" placeholder="Name..." v-model="formContact.firstName">
@@ -29,6 +38,10 @@ export default {
         </form>
     </div>
 </template>
-<style lang="">
-    
+<style lang="scss" scoped>
+  .nav {
+    .cancel {
+      color: #0958fc;
+    }
+  }
 </style>

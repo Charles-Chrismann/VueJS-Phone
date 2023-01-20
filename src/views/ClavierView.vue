@@ -19,6 +19,20 @@ export default {
         this.concurrentContact = {firstName: '', lastName:'Unknown', number:this.phoneNumber}
       }
     },
+    removeDigit() {
+      if(this.phoneNumber === null) return
+      this.phoneNumber = this.phoneNumber.substring(0, this.phoneNumber.length - 1)
+      console.log(this.phoneNumber)
+      if(this.phoneNumber === '') this.phoneNumber = null
+
+
+      this.concurrentContact = {}
+      let contact = this.contacts.find(contact => contact.number.startsWith(this.phoneNumber))
+      if(contact) this.concurrentContact = contact
+      else {
+        this.concurrentContact = {firstName: '', lastName:'Unknown', number:this.phoneNumber}
+      }
+    },
     call() {
       if(!this.concurrentContact) return
       let date = new Date()
@@ -26,7 +40,7 @@ export default {
         contact: this.concurrentContact,
         timestamp: date.getTime()
       }
-      this.$store.state.calls.unshift(call)
+      this.$store.commit('call', call)
     }
   },
   computed: {
@@ -49,10 +63,8 @@ export default {
 </script>
 
 <template>
-  <div>
-
-    clavier
-    <p class="phoneNumber">{{ phoneNumber ? phoneNumber : '0' }}</p>
+  <div class="clavier">
+    <p class="phoneNumber" :class="{ active: phoneNumber }">{{ phoneNumber ? phoneNumber : '0' }}</p>
     <p>{{ getContactName }}</p>
     <div class="keypad">
       <div>
@@ -66,16 +78,27 @@ export default {
       <div>
         <span></span>
         <div class="call" @click="call"><font-awesome-icon icon="fa-solid fa-phone" /></div>
-        <span></span>
+        <span class="delete" @click="removeDigit"><font-awesome-icon icon="fa-solid fa-delete-left" /></span>
       </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+  .clavier {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
   .phoneNumber {
     user-select: none;
     color: transparent;
+
+    &.active {
+      color: black;
+    }
   }
   .keypad {
 
@@ -96,6 +119,10 @@ export default {
       display: grid;
       place-items: center;
       font-size: 1.25rem;
+    }
+    .delete {
+      color: #e5e5e5;
+      font-size: 1.5rem;
     }
   }
 </style>

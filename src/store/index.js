@@ -61,7 +61,7 @@ export default createStore({
   },
   mutations: {
     call(state, call) {
-      state.calls.push(call)
+      state.calls.unshift(call)
     }
   },
   actions: {
