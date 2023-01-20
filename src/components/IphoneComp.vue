@@ -6,26 +6,28 @@ export default {
       this.isMouseDown = true
       this.lastMouseX = e.clientX
       this.lastMouseY = e.clientY
-      console.log(this.lastMouseX, this.lastMouseY)
+      // console.log(this.lastMouseX, this.lastMouseY)
     },
-    mouseUp() {
+    mouseUp(e) {
       this.isMouseDown = false
+      this.lastMouseX = e.clientX
+      this.lastMouseY = e.clientY
     },
     rotate(e) {
       if(!this.isMouseDown) return
-      // console.log(e.clientX, e.clientY)
       let changeX = e.clientX - this.lastMouseX
-      this.lastMouseX += changeX
       let changeY = e.clientY - this.lastMouseY
-      this.lastMouseY += changeY
-      console.log("changes", changeX, changeY)
-      // console.log(this.lastMouseY)
-      // console.log(`rotateY(${this.lastMouseX}deg) rotateX(${this.lastMouseY}deg)`)
+      this.lastMouseX = e.clientX
+      this.lastMouseY = e.clientY
       this.currentRotateX += changeX
-      this.currentRotateY += changeY
-      this.$refs.phone.style.transform = `rotateY(${this.lastMouseX}deg) rotateX(${this.lastMouseY}deg)`
-      // console.log(this.lastMouseX, this.lastMouseY)
-      // console.log('rotate de fou', e)
+      this.currentRotateY -= changeY
+      this.$refs.phone.style.transform = `rotateY(${this.currentRotateX}deg) rotateX(${this.currentRotateY}deg)`
+    }
+  },
+  computed: {
+    getClock() {
+      let date = new Date()
+      return `${date.getHours()}:${date.getMinutes() >= 10 ? date.getMinutes() : '0' + date.getMinutes()}`
     }
   },
   data() {
@@ -42,15 +44,27 @@ export default {
 <template lang="">
   <section class="container" @mousedown="mouseDown($event)" @mousemove="rotate($event)" @mouseup="mouseUp($event)">
     <div class="phone" ref="phone" style="--brPhone:2.5rem;">
-      <div class="side top">7777</div>
+      <div class="side top"></div>
       <div class="side front">
-        <slot></slot>
+        <div class="front__top">
+          <div class="top__clock">{{ getClock }}</div>
+          <div class="top__cam"></div>
+          <div class="top__icons">
+
+            <font-awesome-icon icon="fa-solid fa-signal" />
+            <font-awesome-icon icon="fa-solid fa-wifi" />
+            <font-awesome-icon icon="fa-solid fa-battery-full" />
+          </div>
+        </div>
+        <div class="front__app">
+          <slot></slot>
+        </div>
         <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/IPhone_14_Pro_vector.svg/378px-IPhone_14_Pro_vector.svg.png" alt="" style="width:100%"> -->
       </div>
-      <div class="side right">dd</div>
-      <div class="side back">sdeqsdqsdqs</div>
-      <div class="side left">dd</div>
-      <div class="side bot">dd</div>
+      <div class="side right"></div>
+      <div class="side back"></div>
+      <div class="side left"></div>
+      <div class="side bot"></div>
 
       <div class="corner tr">
         <div style="--i:1;"></div>
@@ -114,10 +128,79 @@ export default {
       height: 100%;
       position: absolute;
       &.front {
-        background: red;
+        background: #fff;
+        border: solid 0.5rem #000000;
         transform: rotateY(90deg) translateX(-5.49%) rotateY(-90deg);
         width: 100%;
         border-radius: var(--brPhone);
+
+        .front__top {
+          height: 4%;
+          width: 100%;
+          display: flex;
+          font-size: 0.75rem;
+          
+          .top__clock {
+            width: 30%;
+            text-align: center;
+            display: grid;
+            place-items: center;
+            font-weight: 600;
+          }
+
+          .top__cam {
+            width: 40%;
+            height: 80%;
+            background: #000000;
+            border-bottom-right-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+            position: relative;
+
+            &::before {
+              content: '';
+              position: absolute;
+              height: 25%;
+              aspect-ratio: 1 / 1;
+              top: 0;
+              left: 0;
+              box-shadow: 2px -2px 0px 2px #000000;
+              transform: translateX(-100%);
+              border-top-right-radius: 20px;
+            }
+
+            &::after {
+              content: '';
+              position: absolute;
+              height: 25%;
+              aspect-ratio: 1 / 1;
+              top: 0;
+              right: 0;
+              box-shadow: -2px -2px 0px 2px #000000;
+              transform: translateX(100%);
+              border-top-left-radius: 20px;
+            }
+          }
+
+          .top__icons {
+            width: 30%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.375rem;
+          }
+        }
+
+        .front__app {
+          height: 96%;
+
+          & > :first-child {
+            height: 90%;
+          }
+          & > :last-child {
+            height: 10%;
+          }
+        }
       }
 
       &.back {

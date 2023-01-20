@@ -16,6 +16,7 @@ export default {
 
 <template lang="">
   <div>
+    
     {{ contact.firstName }}
     <button @click="call()">Call</button>
   </div>

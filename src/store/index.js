@@ -18,11 +18,43 @@ export default createStore({
       {
         contact: {
           firstName: 'Charles',
-          lastName: 'Chrismann',
+          lastName: '19',
           number: '0612345678'
         },
         timestamp: 1674084173298 
-      }
+      },
+      {
+        contact: {
+          firstName: 'Charles',
+          lastName: '18',
+          number: '0612345678'
+        },
+        timestamp: 1674004173298 
+      },
+      {
+        contact: {
+          firstName: 'Charles',
+          lastName: '14',
+          number: '0612345678'
+        },
+        timestamp: 1673700173298 
+      },
+      {
+        contact: {
+          firstName: 'Charles',
+          lastName: '12',
+          number: '0612345678'
+        },
+        timestamp: 1673500173298 
+      },
+      {
+        contact: {
+          firstName: 'Charles',
+          lastName: '2',
+          number: '0612345678'
+        },
+        timestamp: 1672700173298 
+      },
     ]
   },
   getters: {
