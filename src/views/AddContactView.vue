@@ -1,4 +1,5 @@
 <script>
+import router from '@/router'
 export default {
     name: 'AddContactView',
     data() {
@@ -13,7 +14,9 @@ export default {
     },
     methods: {
         addContact() {
-            this.$store.state.contacts.push(this.formContact)
+          
+          this.$store.commit('addContact', this.formContact)
+          router.push('/contacts')
         },
         showPreview(event){
           if(event.target.files.length > 0){
@@ -32,7 +35,7 @@ export default {
       <form @submit.prevent="addContact">
         <div class="nav">
             <span class="cancel">
-                <router-link to="/contact">Cancel</router-link>
+                <router-link to="/contacts">Cancel</router-link>
             </span>
             <h3>New Contact</h3>
             <input class="done" type="submit" value="Done">
@@ -72,6 +75,7 @@ export default {
         display: flex;
         justify-content: space-between;
         width: 100%;
+        padding: 0 4%;
         .cancel {
           color: #0958fc;
         }
@@ -80,15 +84,17 @@ export default {
           background: none;
           border: none;
           outline: none;
-  
+          color: #0958fc;
         }
       }
       .pp {
         position: relative;
-        width: 50%;
+        width: 30%;
         aspect-ratio: 1/1;
         border-radius: 50%;
         overflow: hidden;
+        border: solid 1px;
+        margin: 10% 0;
         img {
           width: 100%;
           height: 100%;

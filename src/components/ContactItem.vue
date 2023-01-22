@@ -1,12 +1,17 @@
 <script>
 export default {
   name: 'ContactItem',
-  props: ['contact'],
+  props: ['contact', 'id'],
   methods: {
     call() {
       console.log(this.contact.firstName)
       let date = new Date()
       this.$store.commit('call', { contact:this.contact, timestamp:date.getTime() })
+    }
+  },
+  computed: {
+    route() {
+      return 'contacts/' + this.id
     }
   }
 }
@@ -18,7 +23,7 @@ export default {
   <div class="contacts__contact">
     
     {{ contact.firstName ? ' ' + contact.firstName : '' }}{{ contact.lastName ? ' ' + contact.lastName : '' }}
-    <router-link to="/journal"><div class="overlay"></div></router-link>
+    <router-link :to="route"><div class="overlay"></div></router-link>
     <span @click="call()"><font-awesome-icon icon="fa-solid fa-phone" /></span>
   </div>
 </template>
@@ -35,6 +40,10 @@ export default {
     .overlay {
       position: absolute;
       inset: 0;
+
+      &:hover {
+        background: #d5d5d540;
+      }
     }
 
     & > span {
@@ -43,6 +52,10 @@ export default {
       right: 0;
       transform: translateY(-50%);
       cursor: pointer;
+
+      &:hover {
+        color: #4cda64;
+      }
     }
   }
 </style>

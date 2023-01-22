@@ -1,14 +1,18 @@
 import { createStore } from 'vuex'
 
+import { cpp } from '@/assets/cpp'
+
 export default createStore({
   state: {
     contacts: [
       {
+        profilePicture: cpp,
         firstName: 'Charles',
         lastName: 'Chrismann',
         number: '0612345678'
       },
       {
+        profilePicture: null,
         firstName: 'Tom',
         lastName: 'Tamen',
         number: '1234'
@@ -62,6 +66,9 @@ export default createStore({
   mutations: {
     call(state, call) {
       state.calls.unshift(call)
+    },
+    addContact(state, contact) {
+      state.contacts.push(contact)
     }
   },
   actions: {

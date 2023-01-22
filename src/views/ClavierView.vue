@@ -119,10 +119,18 @@ export default {
       display: grid;
       place-items: center;
       font-size: 1.25rem;
+      cursor: pointer;
+      &:hover {
+        background: #4cda64;
+      }
     }
     .delete {
       color: #e5e5e5;
       font-size: 1.5rem;
+      cursor: pointer;
+      &:hover {
+        color: #d5d5d5;
+      }
     }
   }
 </style>

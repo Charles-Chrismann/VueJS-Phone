@@ -35,15 +35,15 @@ export default {
       isMouseDown: false,
       lastMouseX: 0,
       lastMouseY: 0,
-      currentRotateX: 0,
-      currentRotateY: 0,
+      currentRotateX: 17,
+      currentRotateY: 23,
     }
   }
 }
 </script>
 <template lang="">
   <section class="container" @mousedown="mouseDown($event)" @mousemove="rotate($event)" @mouseup="mouseUp($event)">
-    <div class="phone" ref="phone" style="--brPhone:2.5rem;">
+    <div class="phone" ref="phone" style="--brPhone:2.5rem; transform: rotateY(17deg) rotateX(23deg)">
       <div class="side top"></div>
       <div class="side front">
         <div class="front__top">
@@ -220,6 +220,7 @@ export default {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
+          animation: pulse 5s linear infinite;
         }
       }
   
@@ -320,12 +321,15 @@ export default {
   }
 }
 
-@keyframes rotate {
+@keyframes pulse {
   from {
-    transform: rotateY(0deg);
+    filter: brightness(0.75);
+  }
+  50% {
+    filter: brightness(1.25);
   }
   to {
-    transform: rotateY(360deg);
+    filter: brightness(0.75);
   }
 }
 </style>

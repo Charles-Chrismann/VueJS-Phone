@@ -24,5 +24,10 @@ export default {
     display: grid;
     place-items: center;
     font-size: 1.25rem;
+    cursor: pointer;
+
+    &:hover {
+      background: #d5d5d5;
+    }
   }
 </style>

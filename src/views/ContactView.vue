@@ -23,7 +23,7 @@ export default {
       </span>
     </div>
     <div class="contacts">
-      <ContactItem v-for="contact, index in contacts" :key="index" :contact="contact"/>
+      <ContactItem v-for="contact, index in contacts" :key="index" :contact="contact" :id="index"/>
     </div>
 
     

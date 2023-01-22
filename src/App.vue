@@ -15,7 +15,7 @@ export default {
       
       <router-link to="/journal"><span class="icon"><font-awesome-icon icon="fa-solid fa-clock-four" /></span><span class="text">Journal</span></router-link>
       <router-link to="/"><span class="icon dots"></span><span class="text">Clavier</span></router-link>
-      <router-link to="/contact"><span class="icon"><font-awesome-icon icon="fa-solid fa-circle-user" /></span><span class="text">Contact</span></router-link>
+      <router-link to="/contacts"><span class="icon"><font-awesome-icon icon="fa-solid fa-circle-user" /></span><span class="text">Contact</span></router-link>
     </nav>
   </IphoneComp>
 </template>

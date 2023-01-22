@@ -3,6 +3,7 @@ import ClavierView from '@/views/ClavierView.vue'
 import ContactView from '@/views/ContactView.vue'
 import JournalView from '@/views/JournalView.vue'
 import AddContactView from '@/views/AddContactView.vue'
+import ContactSingleView from '@/views/ContactSingleView.vue'
 
 const routes = [
   {
@@ -16,9 +17,14 @@ const routes = [
     component: ClavierView
   },
   {
-    path: '/contact',
+    path: '/contacts',
     name: 'contact',
     component: ContactView
+  },
+  {
+    path: '/contacts/:id',
+    name: 'contactSingle',
+    component: ContactSingleView
   },
   {
     path: '/AddContact',
